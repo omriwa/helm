@@ -1,0 +1,6 @@
+deployment:
+  name: webapp
+
+service:
+  name: webapp
+  nodePort: 30003
