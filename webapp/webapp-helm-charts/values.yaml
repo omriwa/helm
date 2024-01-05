@@ -1,6 +1,9 @@
 deployment:
   name: webapp
+  imageRepo: richardchesterwood
 
 service:
   name: webapp
   nodePort: 30003
+
+isDev: true
