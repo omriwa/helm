@@ -1,9 +1,9 @@
 deployment:
-  name: webapp
+  name: app
   imageRepo: richardchesterwood
 
 service:
-  name: webapp
+  name: service
   nodePort: 30003
 
 environment:
