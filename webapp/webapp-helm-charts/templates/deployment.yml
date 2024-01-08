@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{.Values.deployment.name}}
+  name: {{.Values.environment.isDev | ternary .Values.environment.developmentNameEnvironment .Values.environment.productionNameEnvironment}} - {{.Values.deployment.name}}
 
 spec:
   selector:
    matchLabels:
-    app: {{.Values.deployment.name}}
+    app: {{.Values.environment.isDev | ternary .Values.environment.developmentNameEnvironment .Values.environment.productionNameEnvironment}} - {{.Values.deployment.name}}
 
   replicas: 1
   
   template:
     metadata:
       labels:
-        app: {{.Values.deployment.name}}
+        app: {{.Values.environment.isDev | ternary .Values.environment.developmentNameEnvironment .Values.environment.productionNameEnvironment}} - {{.Values.deployment.name}}
 
     spec:
       containers: {{- include "webAppImage" . | indent 6}}

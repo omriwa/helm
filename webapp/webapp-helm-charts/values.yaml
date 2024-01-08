@@ -6,4 +6,7 @@ service:
   name: webapp
   nodePort: 30003
 
-isDev: true
+environment:
+  isDev: true
+  productionNameEnvironment: production
+  developmentNameEnvironment: development

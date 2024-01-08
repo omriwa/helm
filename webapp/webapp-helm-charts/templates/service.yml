@@ -1,15 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: fleetman-webapp
+  name: {{.Values.environment.isDev | ternary .Values.environment.developmentNameEnvironment .Values.environment.productionNameEnvironment}} - {{.Values.service.name}}
 
 spec:
   selector:
-    app: webapp
+    app: {{.Values.environment.isDev | ternary .Values.environment.developmentNameEnvironment .Values.environment.productionNameEnvironment}} - {{.Values.deployment.name}}
 
   ports:
     - name: http
       port: 80
-      nodePort: {{.Values.service.nodePort}}
+      nodePort: {{add .Values.service.nodePort (.Values.environment.isDev | ternary 0 100) }}
 
   type: NodePort
