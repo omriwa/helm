@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{.Values.environment.isDev | ternary .Values.environment.developmentNameEnvironment .Values.environment.productionNameEnvironment}}-{{.Values.service.name}}
-
+  namespace: {{ .Release.Namespace }}
 spec:
   selector:
     app: {{.Values.environment.isDev | ternary .Values.environment.developmentNameEnvironment .Values.environment.productionNameEnvironment}}-{{.Values.deployment.name}}

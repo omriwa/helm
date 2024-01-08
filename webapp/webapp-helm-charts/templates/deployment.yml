@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{.Values.environment.isDev | ternary .Values.environment.developmentNameEnvironment .Values.environment.productionNameEnvironment}}-{{.Values.deployment.name}}
+  namespace: {{ .Release.Namespace }}
 
 spec:
   selector:
